@@ -4,13 +4,14 @@ from .forms import ManutencaoForm
 
 def listar_manutencoes(request):
     manutencoes = Manutencao.objects.all()
-    return render(request, 'manutencao/listar_manutencoes.html')
+    return render(request, 'manutencao/listar_manutencoes.html', {'manutencoes': manutencoes})
 
 def cadastrar_manutencao(request):
     if request.method == 'POST':
         form = ManutencaoForm(request.POST)
         if form.is_valid():
-            form.save
-            return redirect('manutencao:listar_manutencao') # ! Checar singular
+            form.save()
+            return redirect('manutencao:listar_manutencoes')
     else:
         form = ManutencaoForm()
+    return render(request, 'manutencao/cadastrar_manutencao.html', {'form': form})

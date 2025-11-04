@@ -3,10 +3,10 @@ from . import views
 
 app_name = 'manutencao'
 
-urlpatttern = [
-    path('', views.listar_manutencao, name='listar_manutencao' ),
-    path('novo/', views.cadastrar_equipamento, name='cadastrar_equipamento'),
-    path('editar/<int:id>/', views.editar_equipamento, name='editar_equipamento'),
-    path('excluir/<int:id>/', views.excluir_equipamento, name='excluir_equipamento'),
+urlpatterns = [
+    path('', views.listar_manutencoes, name='listar_manutencoes' ),
+    path('novo/', views.cadastrar_manutencao, name='cadastrar_equipamento'),
+    #path('editar/<int:id>/', views.editar_manutencao, name='editar_equipamento'),
+    #path('excluir/<int:id>/', views.excluir_manutencao, name='excluir_equipamento'),
 
 ]

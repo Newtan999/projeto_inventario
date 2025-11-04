@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Cadastrar Setores{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Cadastrar Setores</h2>
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+
+    <fieldset class="border rounded-3 p-4 bg-light shadow-sm">
+      <legend class="float-none w-auto px-2 mb-3">Informações do Setor</legend>
+
+      <div class="mb-3">
+        {{ form.equipamento.label_tag }}
+        {{ form.equipamento|add_class:"form-control" }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.data.label_tag }}
+        {{ form.data|add_class:"form-control" }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.descricao.label_tag }}
+        {{ form.descricao|add_class:"form-control" }}
+      </div>
+
+      <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'setores:listar_setores' %}" class="btn btn-secondary">Voltar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}
