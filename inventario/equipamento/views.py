@@ -11,6 +11,6 @@ def cadastrar_equipamento(request):
         form = EquipamentoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('equipamento:listar_equipamento')
+            return redirect('equipamento:listar_equipamento') #! Checar singular
     else:
         form = EquipamentoForm()
