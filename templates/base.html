@@ -1,30 +1,49 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <!-- Bootstrap CSS via CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventário de TI{% endblock %}</title>
 
-    <title>Inventário Equipamentos de TI</title>
-    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos adicionais -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
 
-    {% if messages %}
-  <div class="container mt-3">
-    {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+<body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Inventário TI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <h1 class="titulo-principal">Inventário</h1>
-    {% block conteudo %}{% endblock %}
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'equipamento:listar_equipamentos' %}">Equipamentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'setor:listar_setores' %}">Setores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'manutencao:listar_manutencoes' %}">Manutenções</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Conteúdo principal -->
+    <main class="container mt-4 mb-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-primary text-white text-center py-3 fixed-bottom shadow-sm">
+        <small>© {{ now|date:"Y" }} - Sistema de Inventário de TI</small>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

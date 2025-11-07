@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {% if form.instance.id %}
+    Editar Equipamento - Inventário
+  {% else %}
+    Novo Equipamento - Inventário
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-semibold text-primary">
+    {% if form.instance.id %}
+      Editar Equipamento
+    {% else %}
+      Cadastrar Novo Equipamento
+    {% endif %}
+  </h2>
+  <a href="{% url 'equipamento:listar_equipamentos' %}" class="btn btn-secondary">
+    ← Voltar
+  </a>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="{{ form.nome.id_for_label }}" class="form-label">Nome</label>
+          {{ form.nome|add_class:"form-control" }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="{{ form.setor.id_for_label }}" class="form-label">Setor</label>
+          {{ form.setor|add_class:"form-select" }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="{{ form.patrimonio.id_for_label }}" class="form-label">Número de Patrimônio</label>
+          {{ form.patrimonio|add_class:"form-control" }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="{{ form.data_aquisicao.id_for_label }}" class="form-label">Data de Aquisição</label>
+          {{ form.data_aquisicao|add_class:"form-control" }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.descricao.id_for_label }}" class="form-label">Descrição</label>
+        {{ form.descricao|add_class:"form-control" }}
+      </div>
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-success px-4">
+          💾 Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

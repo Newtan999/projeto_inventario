@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'inventario.equipamento',
     'inventario.manutencao',
     'inventario.setor',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
