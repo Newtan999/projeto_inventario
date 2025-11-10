@@ -5,7 +5,7 @@ from .forms import EquipamentoForm
 
 def listar_equipamentos(request):
     equipamentos = Equipamento.objects.all()
-    return render(request, 'equipamento/form_equipamentos.html', {'equipamentos': equipamentos})
+    return render(request, 'equipamento/listar_equipamentos.html', {'equipamentos': equipamentos})
 
 def cadastrar_equipamento(request):
     if request.method == 'POST':
