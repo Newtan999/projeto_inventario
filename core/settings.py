@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+
+    # Apps locais
     'inventario.equipamento',
     'inventario.manutencao',
     'inventario.setor',
-    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

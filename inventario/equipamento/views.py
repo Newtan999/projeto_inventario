@@ -21,9 +21,9 @@ def excluir_equipamento(request, id):
     equipamento = get_object_or_404(Equipamento, id=id)
     if request.method == 'POST':
         equipamento.delete()
-        return redirect('listar_equipamentos')
+        return redirect('equipamento:listar_equipamentos')
     
     return render(request, 'equipamento/confirmar_exclusao.html', {
-        'objeto': equipamento.nome,
-        'voltar_url': reverse('listar_equipamentos')
+        'objeto': equipamento.descricao,
+        'voltar_url': reverse('equipamento:listar_equipamentos')
     })
