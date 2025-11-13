@@ -26,14 +26,16 @@
     </a>
   </div>
 
-  <!-- Card principal -->
-  <div class="card shadow-sm border-0 rounded-4">
-    <div class="card-body p-4">
-
-      <form method="post" novalidate>
-        {% csrf_token %}
-
+ 
         <div class="row g-3">
+          
+          <!-- ID se existir -->
+          {% if form.instance.id %}
+            <div class="alert alert-secondary mb-4">
+            <strong>ID do Equipamento:</strong> {{ form.instance.id }}
+            </div>
+          {% endif %}
+
           <!-- Descrição -->
           <div class="col-md-6">
             <label for="{{ form.descricao.id_for_label }}" class="form-label fw-semibold">Descrição do Equipamento</label>

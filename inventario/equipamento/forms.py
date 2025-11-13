@@ -5,6 +5,6 @@ class EquipamentoForm(forms.ModelForm):
     class Meta:
         model = Equipamento
         fields = '__all__'
-        widgets = {
+    '''    widgets = {
             'data': forms.DateInput(attrs={'type': 'datetime-local'}),
-        }
+        } '''
