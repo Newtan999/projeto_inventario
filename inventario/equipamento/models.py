@@ -24,9 +24,11 @@ class Equipamento(models.Model):
     descricao = models.CharField(max_length = 100)
     tipo = models.CharField(max_length=20, choices=TIPO_EQUIPAMENTO, default='outro')
     data_aquisicao = models.DateField()
-    responsavel = models.CharField(max_length = 100, blank=True, null=True)
+    # Responsável vem do cadastro de setor
+    responsavel = models.ForeignKey(Setor, on_delete=models.PROTECT)
     status = models.CharField(max_length = 30, choices=STATUS, default = 'Em uso')
     numero_patrimonio = models.CharField(max_length=9, unique = True)
+    # Setor vem do cadastro de setor
     setor = models.ForeignKey(Setor, on_delete=models.PROTECT)
 
     def __str__(self):

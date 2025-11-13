@@ -2,8 +2,16 @@ from django.db import models
 
 # Setor
 class Setor(models.Model):
-    nome = models.CharField(max_length=100)    
+
+    STATUS =  [
+        ('ativo', 'inativo'),
+
+    ]
+
+    id = models.BigAutoField(primary_key=True)
+    descricao = models.CharField(max_length=100)
+    responsavel = models.CharField(max_length=100)
     
 
     def __str__(self):
-        return self.nome
+        return f"Setor {self.descricao}, responsável {self.responsavel}."
