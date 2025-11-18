@@ -14,4 +14,4 @@ def cadastrar_setor(request):
             return redirect('setor:listar_setores')
     else:
         form = SetorForm()
-    return render(request, 'setor/cadastrar_setor.html', {'form': form})
+    return render(request, 'setor/form_setores.html', {'form': form})
