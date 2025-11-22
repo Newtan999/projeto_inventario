@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Excluir Setor{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <h3 class="mb-4 text-danger">Excluir Setor</h3>
+
+            <div class="alert alert-warning">
+                <strong>Atenção!</strong> Tem certeza de que deseja excluir o setor 
+                <strong>"{{ setor.nome }}"</strong>?<br>
+                Esta ação não pode ser desfeita.
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'setor:listar_setores' %}" class="btn btn-secondary">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-danger">
+                        Confirmar Exclusão
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

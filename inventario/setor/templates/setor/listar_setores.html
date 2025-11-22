@@ -1,66 +1,63 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Setores{% endblock %}
+{% block title %}Setores - Inventário{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Setores Cadastrados</h2>
-    <a href="{% url 'setor:cadastrar_setor' %}" class="btn btn-success">+ Novo Setor</a>
+<div class="container mt-5 mb-5">
+
+  <!-- Cabeçalho -->
+  <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+    <h2 class="fw-semibold text-primary mb-0">
+      <i class="bi bi-diagram-3-fill me-2"></i> Setores Cadastrados
+    </h2>
+    <a href="{% url 'setor:cadastrar_setor' %}" class="btn btn-success shadow-sm">
+      <i class="bi bi-plus-circle"></i> Novo Setor
+    </a>
   </div>
 
   {% if setores %}
-    <table class="table table-striped table-hover">
-      <thead class="table-dark">
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>ID</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>Setor</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>Responsável</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for setor in stores %}
-          <tr>
-            <td>{{ setor.id }}</td>
-            <td>{{ setor.nome }}</td>
-            <td>{{ setor.responsavel }}</td>
-              <a href="{% url 'setor:editar_setor' setor.id %}" class="btn btn-sm btn-primary">Editar</a>
-              <a href="{% url 'setor:excluir_setor' setor.id %}" class="btn btn-sm btn-danger">Excluir</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body p-4">
+
+        <table class="table table-hover align-middle">
+          <thead class="table-primary">
+            <tr>
+              <th class="fw-semibold">ID</th>
+              <th class="fw-semibold">Setor</th>
+              <th class="fw-semibold">Responsável</th>
+              <th class="fw-semibold text-end">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for setor in setores %}
+              <tr>
+                <td>{{ setor.id }}</td>
+                <td>{{ setor.nome }}</td>
+                <td>{{ setor.responsavel }}</td>
+                <td class="text-end">
+                  <a href="{% url 'setor:editar_setor' setor.id %}" 
+                     class="btn btn-sm btn-outline-primary me-2">
+                    <i class="bi bi-pencil-square"></i> Editar
+                  </a>
+
+                  <a href="{% url 'setor:excluir_setor' setor.id %}" 
+                     class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-trash"></i> Excluir
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
   {% else %}
     <div class="alert alert-info mt-4">
-      Nenhum setor cadastrado até o momento.
+      <i class="bi bi-info-circle"></i> Nenhum setor cadastrado até o momento.
     </div>
   {% endif %}
+
 </div>
 {% endblock %}
